@@ -76,6 +76,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'investCore.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.User'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
