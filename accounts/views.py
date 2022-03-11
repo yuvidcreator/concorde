@@ -1,4 +1,6 @@
+from cmath import e
 from multiprocessing import context
+from tokenize import group
 from django.shortcuts import render, redirect,reverse,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from email import message
@@ -104,6 +106,26 @@ def AdminDash(request):
     }
     return render(request, 'back/admin/admin-index.html',context=mydict)
 
+
+
+@login_required(login_url='Admin-Login')
+@user_passes_test(is_admin)
+def AdminProfile(request):
+    auser = User.objects.get(id=request.user.id)
+    context = {'auser':auser}
+    if request.method == "POST":
+        try:
+            auser.username = request.POST['username']
+            auser.first_name = request.POST['first_name']
+            auser.last_name = request.POST['last_name']
+            auser.mobile = request.POST['mobile']
+            auser.email = request.POST['email']
+            print(auser.username,auser.first_name,auser.last_name,auser.mobile,auser.email)
+            auser.save()
+            message.success(request, "Profile Updated Successfully.")
+        except:
+            pass
+    return render(request, 'back/admin/admin_profile.html', context)
 
 
     

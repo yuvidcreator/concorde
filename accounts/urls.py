@@ -18,6 +18,7 @@ urlpatterns = [
 
     #----------------------DASHBOARDS URLS------------------------------------
     path('admindash/', AdminDash, name="Admin-Dahsboard"),
+    path('adminprofile/', AdminProfile, name="Admin-Profile"),
     path('customerdash/', CustomerDash, name="Customer-Dahsboard"),
 
 

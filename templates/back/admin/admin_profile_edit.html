@@ -1,0 +1,61 @@
+{% extends 'back/admin/admin-base.html' %}{% load static %}{% load crispy_forms_tags %} {% block title %}Admin - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+<!-- Page Heading -->
+
+<div class="row">
+
+    <!-- Recent Doctor Chart -->
+    <div class="col-xl-12 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <a href="#">Hello {{request.user.username}}, Update Your Profile:</a>
+                </h6>
+            </div>
+            <!-- Card Body -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="row align-items-center">
+                            <div class="card">
+                                {% for i in messages %}
+                                <p style="color:green">{{i}}</p>
+                                {% endfor %}
+                            </div>
+                            <br>
+                        </div>
+                        <div class="container">
+                            <form class="user" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{request.user.profile_pic.url}}
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="username" value="{{request.user.username}}" name="username" placeholder="Update Username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="username" value="{{request.user.first_name}}" name="first_name" placeholder="Update First Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="username" value="{{request.user.last_name}}" name="last_name" placeholder="Update Last Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="username" value="{{request.user.mobile}}" name="mobile" placeholder="Update Mobile">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="username" value="{{request.user.email}}" name="emailHelp" placeholder="Update Email">
+                                </div>
+                                <button class="btn btn-primary btn-user btn-block" type="submit">Update</button>
+                            </form>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock content %}
