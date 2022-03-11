@@ -191,9 +191,9 @@ def reject_customer_view(request,pk):
 def CustomerDash(request):
     context = {}
     if is_customer(request.user):
-        accountapproval=Customer.objects.all().filter(user_id=request.user.id,status=True)
+        accountapproval=Investor.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
-            customer=Customer.objects.get(user_id=request.user.id)
+            customer=Investor.objects.get(user_id=request.user.id)
             investment = Investment.objects.get(customer=customer)
             context={
                 'customer':customer,
