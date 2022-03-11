@@ -9,6 +9,7 @@ from investCore.settings import DEBUG
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('concorde.urls')),
+    path('', include('accounts.urls')),
 ]
 
 
