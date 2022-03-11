@@ -1,0 +1,21 @@
+{% extends 'back/base.html' %}{% load static %} {% load crispy_forms_tags %} {% block title %}Home Page{% endblock title %} {% block custStyles %}{% endblock custStyles %} {% block content %}
+<!-- Dropdown Card Example -->
+<div class="card shadow mb-4 align-items-center">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary ">Welcome to Concorde Investments</h6>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+        Discription Goes here."
+    </div>
+</div>
+{% if not user.is_admin and not user.is_customer %}
+<div class="row justify-content-center">
+    <h6>Emergency ?</h6>
+</div>
+<div class="row justify-content-center">
+    <p class="row justify-content-center">
+        <a class="btn btn-primary btn-sm" href="{% url 'Customer-Dahsboard' %}" role="button">Take To Dashboard</a>
+    </p>
+</div>> {% endif %} {% endblock content %}

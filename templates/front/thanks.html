@@ -1,0 +1,19 @@
+{% extends 'front/base.html' %}{% load static %} {% block content %}
+<!--Page Header-->
+<section id="main-banner-page" class="position-relative page-header contact-header section-nav-smooth parallax">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="page-titles whitecolor text-center padding">
+                    <h2 class="font-bold"> Thanks for Contacting us</h2>
+                    <h3 class="font-light py-3">Our Representative will contact you soon.</h3>
+                </div>
+                <div class="page-titles whitecolor text-center padding">
+                    <a href="{% url 'Home-Page' %}" class="button btnsecondary gradient-btn mb-sm-0 mb-4">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Header ends -->
+{% endblock content %} {% block custJS %}{% endblock custJS %}

@@ -1,0 +1,54 @@
+{% extends 'back/admin/admin-base.html' %}{% load static %}{% load crispy_forms_tags %} {% block title %}Admin - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{request.user.username}} - Dashboard</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+
+{% include 'back/admin/admin_dashboard_cards.html' %}
+
+<div class="row">
+
+    <!-- Recent Patient Chart -->
+    <div class="col-xl-12 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Update Investors:</h6>
+            </div>
+
+            <div class="card-body table-responsive py-3 d-flex flex-row align-items-center justify-content-between">
+                <table class="table table-hover" id="dev-table">
+                    <thead>
+                        <tr>
+                            <th>Pic</th>
+                            <th>Name</th>
+                            <th>Invested Amount</th>
+                            <th>Invested Date</th>
+                            <th>Next Payment</th>
+                            <th>Invest Update</th>
+                        </tr>
+                    </thead>
+                    {% for d in customers %}
+                    <tr>
+                        {% if d.profile_pic %}
+                        <td><img class="avatar-img rounded-circle" src="{{d.profile_pic.url}}" style="width: 50px;"></td>
+                        {% endif %}
+                        <td>{{d.get_name}}</td>
+                        <td>{{d.get_email}}</td>
+                        <td>{{d.get_mobile}}</td>
+                        <td>{{d.get_mobile}}</td>
+                        <td><a href="{% url 'adminupdate-invest' d.id %}"><i class="fas fa-fw fa-edit"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

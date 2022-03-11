@@ -1,0 +1,37 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Concorde Investment</title>
+    <link href="{% static 'images/favicon.ico' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tooltipster.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cubeportfolio.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/revolution/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/revolution/settings.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- header -->
+    {% include 'front/header.html' %}
+    <!-- header -->
+
+    {% block content %} {% endblock content %}
+
+    <!--Site Footer Here-->
+    {% include 'front/footer.html' %}
+    <!--Footer ends-->
+
+    {% block custJS %}{% endblock custJS %}
+
+    {% include 'front/allJS.html' %}
+</body>
+</html>

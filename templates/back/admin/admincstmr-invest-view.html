@@ -1,0 +1,68 @@
+{% extends 'back/admin/admin-base.html' %}{% load static %}{% load widget_tweaks %} {% block title %}Admin - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+
+<div class="">
+    <div class="card">
+        {% for i in messages %}
+        <p style="color:green">{{i}}</p>
+        {% endfor %}
+    </div>
+    <form method="get">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <h3>Get Your Investments Updates</h3>
+                </div>
+                <div class="form-group">
+                    <img class="avatar-img rounded-circle" src="{{customer.profile_pic.url}}">
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover" id="dev-table">
+                        <thead>
+                            <tr>
+                                <td><b>Investor Name : {{customer.get_name}}</b></td>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>Invested Amount : {{investment.invested_amount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Invested Date : {{investment.invested_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Maturity Period : {{investment.maturity_period}}</td>
+                        </tr>
+                        <tr>
+                            <td>Maturity Amount : {{investment.maturity_amount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Profits : {{investment.profit}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transfered Amount :  {{investment.transfered_amount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Amount Transfered Mode : {{investment.transfered_mode}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transfered Mode : {{investment.transfered_mode}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transaction ID : {{investment.transaction_id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transaction Date : {{investment.transfered_date}}</td>
+                        </tr>
+                    </table>
+                    <div>
+                        <div class="text-center">
+                            <a class="btn btn-user btn-block" href="{% url 'adminupdate-customer-invest' %}">Update More</a>
+                            <a class="btn btn-user btn-block" href="{% url 'Admin-Dahsboard' %}">Back to Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

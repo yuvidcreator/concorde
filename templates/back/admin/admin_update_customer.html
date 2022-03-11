@@ -1,0 +1,81 @@
+{% extends 'back/admin/admin-base.html' %}{% load static %}{% load widget_tweaks %} {% block title %}Admin - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+
+<div class="">
+    <div class="card">
+        {% for i in messages %}
+        <p style="color:green">{{i}}</p>
+        {% endfor %}
+    </div>
+    <form method="get" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>Get Customer Profile</p>
+                </div>
+                <div class="form-content">
+                    <!-- <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{userPForm.first_name.label}}</label> {% render_field userPForm.first_name class="form-control" placeholder="Enter First Name" %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{userPForm.last_name.label}}</label> {% render_field userPForm.last_name class="form-control" placeholder="Enter Last Name" %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{userPForm.email.label}}</label> {% render_field userPForm.email class="form-control" placeholder="Enter Email" %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{userPForm.mobile.label}}</label> {% render_field userPForm.mobile class="form-control" placeholder="Enter Mobile" %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{proForm.bank_details.label}}</label> {% render_field proForm.bank_details class="form-control" placeholder="Enter Bank Details" %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{proForm.address.label}}</label> {% render_field proForm.address class="form-control" placeholder="Enter Full Address" %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{proForm.upi_no.label}}</label> {% render_field proForm.upi_no class="form-control" placeholder="Enter UPI No/ID" %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{proForm.gpay_phonepe_no.label}}</label> {% render_field proForm.gpay_phonepe_no class="form-control" placeholder="Enter Google Pay No" %}
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <button type="submit" class="btn btn-primary btn-user">Update</button> -->
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <img class="avatar-img rounded-circle" src="{{customer.profile_pic.url}}" style="width: 100px;">
+                        </div>
+                        <div class="form-group">
+                            Full Name: {{customer.get_name}}
+                        </div>
+                        <div class="form-group">
+                            Gender: {{customer.gender}}
+                        </div>
+                        <div class="form-group">
+                            Date of Birth: {{customer.date_of_birth}}
+                        </div>
+                        <div class="form-group">
+                            Mobile No: {{customer.get_mobile}}
+                        </div>
+                        <div class="form-group">
+                            Bank Details: {{customer.bank_details}}
+                        </div>
+                        <div class="form-group">
+                            UPI No: {{customer.upi_no}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

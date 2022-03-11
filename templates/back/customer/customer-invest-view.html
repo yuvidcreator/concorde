@@ -1,0 +1,103 @@
+{% extends 'back/customer/customer-base.html' %}{% load static %}{% load widget_tweaks %} {% block title %}Invester - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+
+<div class="">
+    <div class="card">
+        {% for i in messages %}
+        <p style="color:green">{{i}}</p>
+        {% endfor %}
+    </div>
+    <form method="get" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <h3>Get Your Investments Updates</h3>
+                </div>
+                <!-- <div class="form-content">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <img class="avatar-img rounded-circle" src="{{request.user.profile_pic.url}}" style="width: 100px;">
+                        </div>
+                        <div class="form-group">
+                            Investor Name : {{request.user.get_name}}
+                        </div>
+                        <div class="form-group">
+                            Invested Amount : {{investment.invested_amount}}
+                        </div>
+                        <div class="form-group">
+                            Invested Date : {{investment.invested_date}}
+                        </div>
+                        <div class="form-group">
+                            Maturity Period : {{investment.maturity_period}}
+                        </div>
+                        <div class="form-group">
+                            Maturity Amount : {{investment.maturity_amount}}
+                        </div>
+                        <div class="form-group">
+                            Profits : {{investment.profit}}
+                        </div>
+                        <div class="form-group">
+                            Transfered  {{investment.transfered_amount}}
+                        </div>
+                        <div class="form-group">
+                            Transfered Mode : {{investment.transfered_mode}}
+                        </div>
+                        <div class="form-group">
+                            Transaction ID : {{investment.transaction_id}}
+                        </div>
+                        <div class="form-group">
+                            Transaction Date : {{investment.transfered_date}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <img class="avatar-img rounded-circle" src="{{customer.profile_pic.url}}" style="width: 100px;">
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover" id="dev-table">
+                        <thead>
+                            <tr>
+                                <td><b>Investor Name : {{customer.get_name}}</b></td>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>Invested Amount : {{investment.invested_amount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Invested Date : {{investment.invested_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Maturity Period : {{investment.maturity_period}}</td>
+                        </tr>
+                        <tr>
+                            <td>Maturity Amount : {{investment.maturity_amount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Profits : {{investment.profit}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transfered Amount :  {{investment.transfered_amount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Amount Transfered Mode : {{investment.transfered_mode}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transfered Mode : {{investment.transfered_mode}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transaction ID : {{investment.transaction_id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transaction Date : {{investment.transfered_date}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

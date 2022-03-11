@@ -1,0 +1,53 @@
+{% extends 'back/customer/customer-base.html' %}{% load static %}{% load widget_tweaks %} {% block title %}Customer - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+
+<div class="">
+    <div class="card">
+        {% for i in messages %}
+        <p style="color:green">{{i}}</p>
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>Update Customer Bank Details</p>
+                </div>
+                <div class="form-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <img class="avatar-img rounded-circle" src="{{customer.profile_pic.url}}" style="width: 100px;">
+                            </div>
+                            <div class="form-group">
+                                <label>{{customrForm.gender.label}}</label> {% render_field customrForm.gender class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{customrForm.date_of_birth.label}}</label> {% render_field customrForm.date_of_birth class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{customrForm.bank_details.label}}</label> {% render_field customrForm.bank_details class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{customrForm.upi_no.label}}</label> {% render_field customrForm.upi_no class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{customrForm.gpay_phonepe_no.label}}</label> {% render_field customrForm.gpay_phonepe_no class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{customrForm.address.label}}</label> {% render_field customrForm.address class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{customrForm.city.label}}</label> {% render_field customrForm.city class="form-control" placeholder=" " %}
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

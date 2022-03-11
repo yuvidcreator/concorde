@@ -1,0 +1,57 @@
+{% extends 'back/admin/admin-base.html' %}{% load static %}{% load widget_tweaks %} {% block title %}Admin - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+
+<div class="">
+    <div class="card">
+        {% for i in messages %}
+        <p style="color:green">{{i}}</p>
+        {% endfor %}
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>Update Customer Profile</p>
+                </div>
+                <div class="form-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{updateInvestForm.next_payment.label}}</label> {% render_field updateInvestForm.next_payment class="form-control" placeholder="Next Payment" %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{updateInvestForm.next_payment_date.label}}</label> {% render_field updateInvestForm.next_payment_date class="form-control" placeholder="Next Payment Date" %}
+                            </div>
+                            {% comment %}
+                            <div class="form-group">
+                                <label>{{updateInvestForm.maturity_period.label}}</label> {% render_field updateInvestForm.maturity_period class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{updateInvestForm.maturity_amount.label}}</label> {% render_field updateInvestForm.maturity_amount class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{updateInvestForm.profit.label}}</label> {% render_field updateInvestForm.profit class="form-control" placeholder=" " %}
+                            </div>
+                            {% endcomment %}
+                        </div>
+                        {% comment %}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{investForm.transfered_amount.label}}</label> {% render_field investForm.transfered_amount class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{investForm.transfered_mode.label}}</label> {% render_field investForm.transfered_mode class="form-control" placeholder=" " %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{investForm.transaction_id.label}}</label> {% render_field investForm.transaction_id class="form-control" placeholder=" " %}
+                            </div>
+                        </div>
+                        {% endcomment %}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

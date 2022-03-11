@@ -1,0 +1,35 @@
+{% extends 'back/customer/customer-base.html' %}{% load static %}{% load widget_tweaks %} {% block title %}Customer - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+
+<div class="">
+    <div class="card">
+        {% for i in messages %}
+        <p style="color:green">{{i}}</p>
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>Update Customer Bank Details</p>
+                </div>
+                <div class="form-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <img class="avatar-img rounded-circle" src="{{customer.profile_pic.url}}" style="width: 100px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Update Profile Pic</label> {% render_field customrForm.profile_pic class="form-control" placeholder=" " %}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

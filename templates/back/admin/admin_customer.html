@@ -1,0 +1,62 @@
+{% extends 'back/admin/admin-base.html' %}{% load static %}{% load crispy_forms_tags %} {% block title %}Admin - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{request.user.username}} - Dashboard</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+{% include 'back/admin/admin_dashboard_cards.html' %}
+
+<!-- Content Row -->
+<div class="row">
+    <!-- Doctors List Chart -->
+    <div class="col-xl-12 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Customers List</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>City</th>
+                                <th>Status</th>
+                                <th>Profile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in customers %}
+                            <tr>
+                                <td> {{d.get_name}}</td>
+                                {% if d.profile_pic %}
+                                <td><img class="avatar-img rounded-circle" src="{{d.profile_pic.url}}" style="width: 50px;"></td>
+                                {% endif %}
+                                <td>
+                                    <a href="{% url 'update-customer' d.id %}">{{d.get_email}}</a></td>
+                                <td>{{d.get_mobile}}</td>
+                                <td>{{d.address}}</td>
+                                {%if d.status%}
+                                <td> <span class="label label-primary">Permanent</span></td>
+                                {% else %}
+                                <td> <span class="label label-success">On Hold</span></td>
+                                {% endif %}
+                                <td>
+                                    <a href="{% url 'update-customer' d.id %}"><i class="fas fa-fw fa-edit"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

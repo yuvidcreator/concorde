@@ -1,0 +1,34 @@
+{% extends 'back/base.html' %}{% load static %}{% block title %}{{user.username}}'s Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+
+<div class="card shadow mb-4 align-items-center">
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{message}}
+    </div>
+    {% endfor %} {% endif %}
+    <br>
+    <!-- Card Header - Dropdown -->
+    <div class="card-title mt-10">
+        <h3 class="font-weight-bold text-primary mt-10">Hello, {{request.user.username}}</h3>
+    </div>
+
+    <hr class="sidebar-divider my-0">
+    <h6 class="text-primary ">Welcome to Concorde Investments</h6>
+
+    <!-- Card Body -->
+    <div class="card-body">
+        <p>Your Account is not approved till now <br>Our Team is checking your profile <br> Soon your Account will be confirmed !!!</p>
+        <p>Please Check Later. Thank You..!!!</p>
+    </div>
+    <div class="card-body mb-10"><a class="btn btn-primary btn-sm justify-content-center" href="{% url 'logout' %}" role="button">Logout For Now</a></div>
+
+</div>
+{% endblock content %} {% block custJS %}
+
+<script type="text/javascript">
+    $(window).on('load', function() {
+        $('#privacyModal').modal('show');
+    });
+</script>
+
+{% endblock custJS %}

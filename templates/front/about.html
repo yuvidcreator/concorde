@@ -1,0 +1,344 @@
+{% extends 'front/base.html' %}{% load static %} {% block content %}
+<!--Page Header-->
+<section id="main-banner-page" class="position-relative page-header about-header parallax section-nav-smooth">
+    <div class="overlay overlay-dark opacity-7"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="page-titles whitecolor text-center padding_top padding_bottom">
+                    <h2 class="font-xlight">A New Idea</h2>
+                    <h2 class="font-bold">Inspires Us To Make</h2>
+                    <h2 class="font-xlight">Great Family</h2>
+                    <h3 class="font-light pt-2">The Best Place for Investmenst</h3>
+                </div>
+            </div>
+        </div>
+        <div class="gradient-bg title-wrap">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 whitecolor">
+                    <h3 class="float-start">About Concorde Investment</h3>
+                    <ul class="breadcrumb top10 bottom10 float-end">
+                        <li class="breadcrumb-item hover-light">Home</a> -
+                        </li>
+                        <li class="hover-light">About</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Header ends -->
+
+<!-- About us -->
+<section id="aboutus" class="padding_top padding_bottom">
+    <div class="container aboutus">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 padding_bottom_half">
+                <div class="image"><img alt="SEO" src="{% static 'images/aboutus.png' %}"></div>
+            </div>
+            <div class="col-lg-5 offset-lg-1 col-md-6 padding_bottom_half text-center text-md-start">
+                <h2 class="darkcolor font-normal bottom30">We’re <span class="defaultcolor">Reinventing the Traditional Concept</span> of Investmentss</h2>
+                <p class="bottom35">Our aim is to provide a robust savings solution that’s better, cheaper and more reliable than banking systems, thereby, addressing the financial needs of hundreds of people. Want to know How?</p>
+                <a href="{% url 'Contact-Page' %}" class="button btnsecondary gradient-btn">Contact us</a>
+            </div>
+        </div>
+        <div class="row  align-items-center">
+            <div class="col-lg-5  col-md-6 padding_top_half text-center text-md-start">
+                <h2 class="darkcolor font-normal bottom30">Borrow Money Which is Multiples of <span class="defaultcolor">What You have Invested</span> </h2>
+                <p class="bottom35">Concorde Investmentss are a professionally managed organization with a strong management team working under the guidance of promoters with a proven track in the financial service sector. The firm has succeeded in earning the trust of her
+                    customers with a unique service-oriented approach. </p>
+            </div>
+            <div class="col-lg-6 offset-lg-1 col-md-6 padding_top_half">
+                <div class="progress-bars">
+                    <div class="progress">
+                        <p>Small Investors</p>
+                        <div class="progress-bar gradient-bg" data-value="94">
+                            <div class="progress-bar gradient-bg whitecolor" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">94%</div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <p>Businessmen</p>
+                        <div class="progress-bar gradient-bg" data-value="92">
+                            <div class="progress-bar gradient-bg whitecolor" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">92%</div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <p>Small Scale Industrialists</p>
+                        <div class="progress-bar gradient-bg" data-value="86">
+                            <div class="progress-bar gradient-bg whitecolor" role="progressbar" style="width: 86%" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100">86%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About us ends -->
+
+<!-- WOrk Process-->
+<section id="our-process" class="padding bgdark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+                <div class="heading-title whitecolor wow fadeInUp" data-wow-delay="300ms">
+                    <span></span>
+                    <h2 class="font-normal">Smart way to Save and Borrow </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="process-wrapp">
+                <li class="whitecolor wow fadeIn" data-wow-delay="300ms">
+                    <span class="pro-step bottom20">01</span>
+                    <p class="fontbold bottom25">Plan</p>
+                </li>
+                <li class="whitecolor wow fadeIn" data-wow-delay="400ms">
+                    <span class="pro-step bottom20">02</span>
+                    <p class="fontbold bottom25">Borrow</p>
+                </li>
+                <li class="whitecolor wow fadeIn" data-wow-delay="500ms">
+                    <span class="pro-step bottom20">03</span>
+                    <p class="fontbold bottom25">Reap</p>
+                </li>
+                <!-- <li class="whitecolor wow fadeIn" data-wow-delay="600ms">
+                    <span class="pro-step bottom20">04</span>
+                    <p class="fontbold bottom25">Development</p>
+                    <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+                </li>
+                <li class="whitecolor wow fadeIn" data-wow-delay="700ms">
+                    <span class="pro-step bottom20">05</span>
+                    <p class="fontbold bottom25">Quality Check</p>
+                    <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</section>
+<!--WOrk Process ends-->
+
+<!-- Our Team-->
+<!-- <section id="our-team" class="padding_top half-section-alt teams-border">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="heading-title wow fadeInUp text-center text-md-start" data-wow-delay="300ms">
+                    <span class="defaultcolor">Quisque tellus risus, adipisci</span>
+                    <h2 class="darkcolor bottom30 font-normal">Meet Our Experts</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-start">
+                <p class="heading_space">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus. </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="ourteam-slider" class="owl-carousel">
+                    <div class="item">
+                        <div class="team-box">
+                            <div class="image">
+                                <img src="{% static 'images/team-1.jpg' %}" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4 class="darkcolor">Jessica Twain</h4>
+                                <p>Agency Owner</p>
+                                <ul class="social-icons-simple">
+                                    <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li><a class="twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+                                    <li><a class="insta" href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="team-box">
+                            <div class="image">
+                                <img src="{% static 'images/team-2.jpg' %}" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4 class="darkcolor">Jason Wudex </h4>
+                                <p>Designer</p>
+                                <ul class="social-icons-simple">
+                                    <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li><a class="twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+                                    <li><a class="insta" href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="team-box single">
+                            <div class="image">
+                                <img src="{% static 'images/team-3.jpg' %}" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4 class="darkcolor">Jessica Twain</h4>
+                                <p>Agency Owner</p>
+                                <ul class="social-icons-simple">
+                                    <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li><a class="twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+                                    <li><a class="insta" href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="team-box">
+                            <div class="image">
+                                <img src="{% static 'images/team-4.jpg' %}" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4 class="darkcolor">Hayden Wood</h4>
+                                <p>Marketing</p>
+                                <ul class="social-icons-simple">
+                                    <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li><a class="twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+                                    <li><a class="insta" href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="team-box">
+                            <div class="image">
+                                <img src="{% static 'images/team-1.jpg' %}" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4 class="darkcolor">Shania Jackson </h4>
+                                <p>Print Media</p>
+                                <ul class="social-icons-simple">
+                                    <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li><a class="twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+                                    <li><a class="insta" href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="team-box">
+                            <div class="image">
+                                <img src="{% static 'images/team-2.jpg' %}" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4 class="darkcolor">Jessica Twain</h4>
+                                <p>Agency Owner</p>
+                                <ul class="social-icons-simple">
+                                    <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li><a class="twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+                                    <li><a class="insta" href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="team-box">
+                            <div class="image">
+                                <img src="{% static 'images/team-3.jpg' %}" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4 class="darkcolor">Jessica Twain</h4>
+                                <p>Agency Owner</p>
+                                <ul class="social-icons-simple">
+                                    <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li><a class="twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+                                    <li><a class="insta" href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- Our Team ends-->
+
+<!-- Partners-->
+<!-- <section id="our-partners" class="padding_top padding_bottom bglight">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h2 class="d-none">Carousel Is Here</h2>
+                <div id="partners-slider" class="owl-carousel">
+                    <div class="item">
+                        <div class="logo-item"> <img alt="" src="{% static 'images/logo-1.png' %}"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-2.png' %}"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-3.png' %}"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-4.png"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-5.png' %}"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-1.png' %}"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-2.png' %}"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-3.png' %}"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-4.png' %}"></div>
+                    </div>
+                    <div class="item">
+                        <div class="logo-item"><img alt="" src="{% static 'images/logo-5.png' %}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- Partners ends-->
+
+<!-- Contact US -->
+<!-- <section id="stayconnect" class="bglight position-relative ">
+    <div class="container">
+        <div class="contactus-wrapp">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="heading-title wow fadeInUp text-center text-md-start" data-wow-delay="300ms">
+                        <h3 class="darkcolor bottom20">Stay Connected</h3>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <form class="getin_form wow fadeInUp" data-wow-delay="400ms" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" id="result"></div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="userName" class="d-none"></label>
+                                    <input class="form-control" type="text" placeholder="Name" required id="userName" name="userName">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="companyName" class="d-none"></label>
+                                    <input class="form-control" type="tel" placeholder="Company" id="companyName" name="companyName">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="email" class="d-none"></label>
+                                    <input class="form-control" type="email" placeholder="Email" required id="email" name="email">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <button type="submit" class="button gradient-btn w-100" id="submit_btn">subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- Contact US ends -->
+
+{% endblock content %} {% block custJS %}{% endblock custJS %}
