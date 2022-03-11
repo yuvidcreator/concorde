@@ -20,6 +20,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'Contact-Page' %}">Contact</a>
                     </li>
+                    {% if not request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'customerlogin' %}" class="nav-link">Member Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        {% if user.is_admin %}
+                        <a href="{% url 'Admin-Dahsboard' %}" class="nav-link">Admin Dashboard</a> {% endif %} {% if user.is_customer %}
+                        <a href="{% url 'Customer-Dahsboard' %}" class="nav-link">Member Dashboard</a> {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -44,6 +58,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'Contact-Page' %}">Contact</a>
                     </li>
+                    {% if not request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'customerlogin' %}" class="nav-link">Member Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        {% if user.is_admin %}
+                        <a href="{% url 'Admin-Dahsboard' %}" class="nav-link">Admin Dashboard</a> {% endif %} {% if user.is_customer %}
+                        <a href="{% url 'Customer-Dahsboard' %}" class="nav-link">Member Dashboard</a> {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </nav>
             <div class="side-footer w-100">
