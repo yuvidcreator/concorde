@@ -335,7 +335,7 @@
     </div>
 </section>
 <!-- Counters ends-->
-
+{% comment %}
 <!-- Our Team-->
 <!-- <section id="our-team" class="padding_top half-section-alt teams-border">
     <div class="container">
@@ -562,7 +562,7 @@
     </div>
 </section> -->
 <!--Pricing ends-->
-
+{% endcomment %}
 <!-- Partners-->
 <section id="our-partners" class="padding">
     <div class="container">
@@ -591,6 +591,7 @@
                     <div class="item">
                         <div class="logo-item"><img alt="" src="{% static 'images/logos/mf-fn.png' %}"></div>
                     </div>
+                    {% comment %}
                     <!-- <div class="item">
                         <div class="logo-item"><img alt="" src="{% static 'images/logo-3.png' %}"></div>
                     </div>
@@ -600,6 +601,7 @@
                     <div class="item">
                         <div class="logo-item"><img alt="" src="{% static 'images/logo-5.png' %}"></div>
                     </div> -->
+                    {% endcomment %}
                 </div>
             </div>
         </div>
@@ -607,6 +609,7 @@
 </section>
 <!-- Partners ends-->
 
+{% comment %}
 <!-- Testimonials -->
 <!-- <section id="our-testimonial" class="bglight padding_bottom">
     <div class="parallax page-header testimonial-bg">
@@ -699,9 +702,10 @@
     </div>
 </section> -->
 <!--testimonials end-->
-
+{% endcomment %}
 <!-- Contact US -->
 <section id="stayconnect" class="bglight position-relative">
+    {% comment %}
     <!-- <div class="container">
         <div class="contactus-wrapp">
             <div class="row">
@@ -741,7 +745,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div> -->{% endcomment %}
 </section>
 <!-- Contact US ends -->
 {% endblock content %} {% block custJS %}{% endblock custJS %}
