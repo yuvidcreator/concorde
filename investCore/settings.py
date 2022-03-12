@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'gcxgcxih*&87sjby$#ca 3')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == "1"
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','3.111.97.6','concordeinvestments.in','www.concordeinvestments.in']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','65.0.202.177','concordeinvestments.in','www.concordeinvestments.in']
 
 
 # Application definition
