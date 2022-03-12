@@ -48,7 +48,7 @@ class Investor(models.Model):
 
 
 class Investment(models.Model):
-    customer=models.ForeignKey(Investor, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(Investor, on_delete=models.CASCADE, null=True, blank=True)
     invested_amount = models.CharField(max_length=100,null=True, blank=True,)
     investment_date = models.DateTimeField(auto_now=False)
     investment_period = models.CharField(max_length=100,null=True, blank=True,)
@@ -58,13 +58,13 @@ class Investment(models.Model):
     status = models.BooleanField(default=True)
 
     def _str_(self):
-        return str(self.customer.user.first_name+"has invested Rs."+self.invested_amount+" on "+self.investment_date)
+        return str(self.user.first_name+"has invested Rs."+self.invested_amount+" on "+self.investment_date)
     
 
 
 class Update(models.Model):
-    customer = models.ForeignKey(Investor, on_delete=models.CASCADE, null=True)
-    investment = models.ForeignKey(Investment, on_delete=models.CASCADE, null=True)
+    investor = models.PositiveIntegerField(null=True, blank=True)
+    investment = models.PositiveIntegerField(null=True, blank=True)
     next_payment_note = models.CharField(max_length=100,null=True, blank=True,)
     next_payment_date = models.CharField(max_length=100,null=True, blank=True,)
     profit = models.CharField(max_length=50, null=True, blank=True)
@@ -76,4 +76,4 @@ class Update(models.Model):
     payment_status = models.BooleanField(default=False) 
 
     def __str__(self):
-        return str(self.customer+" = "+self.next_payment_date)
+        return str(self.user+" = "+self.next_payment_date)

@@ -118,8 +118,9 @@
                         <td>{{request.user.mobile}}</td>
                         <td>{{request.user.date_joined|date:"F d, Y"}}</td>
                         <td> <span class="label label-primary">Permanent</span></td>
-                        <!-- <td> <a class="btn btn-primary btn-xs" href="{% url 'customer-update' %}"><span class="glyphicon glyphicon-edit"></span></a></td> -->
-                        <td><a href="{% url 'customer-update' %}"><i class="fas fa-fw fa-edit"></i></a></td>
+                        {% comment %}
+                        <td> <a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-edit"></span></a></td>{% endcomment %}
+                        <td><a href="{% url 'Customer-Profile' %}"><i class="fas fa-fw fa-edit"></i></a></td>
                     </tr>
                 </table>
             </div>
@@ -150,7 +151,7 @@
                         <td>₹{{investment.invested_amount}}</td>
                         <td>₹{{investment.profit}}</td>
                         <td>{{investment.transfered_date}}</td>
-                        <td><a href="{% url 'customer-invest-view' %}"><i class="fas fa-fw fa-edit"></i></a></td>
+                        <td><a href="#"><i class="fas fa-fw fa-edit"></i></a></td>
                     </tr>
                 </table>
             </div>

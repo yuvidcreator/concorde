@@ -1,11 +1,11 @@
 from cmath import e
 from multiprocessing import context
-from tokenize import group
+from telnetlib import STATUS
 from django.shortcuts import render, redirect,reverse,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from email import message
 
-from .models import User, Investor, Investment
+from .models import *
 from .forms import *
 from django.views.generic import CreateView
 from django.contrib.auth import login
@@ -79,7 +79,7 @@ def afterlogin_view(request):
     if is_admin(request.user):
         return redirect('Admin-Dahsboard')
     elif is_customer(request.user):
-        accountapproval=Investor.objects.all().filter(user_id=request.user.id,status=True)
+        accountapproval=Investor.objects.all().filter(id=request.user.id,status=True)
         if accountapproval:
             return redirect('Customer-Dahsboard')
         else:
@@ -99,12 +99,12 @@ def AdminDash(request):
     #for four cards
     customercount=Investor.objects.all().filter(status=True).count()
     pendingcustomercount=Investor.objects.all().filter(status=False).count()
-    mydict={
+    context={
     'customers':customers,
     'customercount':customercount,
     'pendingcustomercount':pendingcustomercount,
     }
-    return render(request, 'back/admin/admin-index.html',context=mydict)
+    return render(request, 'back/admin/admin-index.html',context)
 
 
 
@@ -120,7 +120,6 @@ def AdminProfile(request):
             auser.last_name = request.POST['last_name']
             auser.mobile = request.POST['mobile']
             auser.email = request.POST['email']
-            print(auser.username,auser.first_name,auser.last_name,auser.mobile,auser.email)
             auser.save()
             message.success(request, "Profile Updated Successfully.")
         except:
@@ -138,12 +137,12 @@ def admin_approve_customer_view(request):
     customercount=Investor.objects.all().filter(status=True).count()
     pendingcustomercount=Investor.objects.all().filter(status=False).count()
     customers=Investor.objects.all().filter(status=False)
-    mydict = {
+    context = {
         'customercount':customercount,
         'pendingcustomercount':pendingcustomercount,
         'customers':customers,
     }
-    return render(request,'back/admin/admin_approve_customer.html',context=mydict)
+    return render(request,'back/admin/admin_approve_customer.html',context)
 
 
 
@@ -156,6 +155,7 @@ def approve_customer_view(request,pk):
     user=User.objects.get(id=customer.user_id)
     customer.status=True
     customer.save()
+    user.save()
     # email_template = render_to_string('back/email_templates/admin_custmr_approved_email.html',{'name':user.first_name,'username':user.username})
     # usrEmailmsg = EmailMessage(
     #     'Success - Account has been Approved',
@@ -175,8 +175,8 @@ def reject_customer_view(request,pk):
     #reject customers
     customer=Investor.objects.get(id=pk)
     user=User.objects.get(id=customer.user_id)
-    user.delete()
     customer.delete()
+    user.delete()
     # email_template = render_to_string('back/email_templates/admin_custmr_rejected_email.html',{'name':user.first_name})
     # usrEmailmsg = EmailMessage(
     #     'Sorry, Account has been Rejected',
@@ -211,16 +211,73 @@ def reject_customer_view(request,pk):
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
 def CustomerDash(request):
-    context = {}
-    if is_customer(request.user):
-        accountapproval=Investor.objects.all().filter(user_id=request.user.id,status=True)
-        if accountapproval:
-            customer=Investor.objects.get(user_id=request.user.id)
-            investment = Investment.objects.get(customer=customer)
+    accountapproval=Investor.objects.get(user_id=request.user.id)
+    # print(accountapproval.status==True)
+    if accountapproval.status==True:
+        try:
+            customer=User.objects.get(id=request.user.id)
+            nvstr = Investor.objects.get(user_id=request.user.id)
+            # investment = Investment.objects.get(user_id=request.user.id)
+            updates = Update.objects.all()
             context={
+                'nvstr':nvstr,
                 'customer':customer,
-                'investment':investment
+                'accountapproval':accountapproval,
+                'updates':updates,
             }
             return render(request, 'back/customer/customer-index.html',context)
-        else:
-            return render(request,'back/customer/customer_wait_for_approval.html')
+        except Exception as e:
+            return HttpResponse(e)
+    else:
+        return redirect('afterlogin')
+
+
+
+
+@login_required(login_url='customerlogin')
+@user_passes_test(is_customer)
+def CustomerProfile(request):
+    cuser = User.objects.get(id=request.user.id)
+    iuser = Investor.objects.get(user=cuser)
+    userForm = InvestorProfileForm(request.POST or None, request.FILES or None, instance=iuser)
+    context = {'userForm':userForm}
+    if request.method == "POST":
+        userForm = InvestorProfileForm(request.POST or None, request.FILES or None, instance=iuser)
+        if userForm.is_valid():
+            userForm.save()
+            cuser.username = request.POST['username']
+            cuser.first_name = request.POST['first_name']
+            cuser.last_name = request.POST['last_name']
+            cuser.mobile = request.POST['mobile']
+            cuser.email = request.POST['email']
+            cuser.save()
+            print(cuser.mobile)
+            messages.success(request, "Profile Updated Successfully.")
+            return redirect('Customer-Profile')
+    return render(request, 'back/customer/customer-profile.html', context)
+
+
+
+@login_required(login_url='customerlogin')
+@user_passes_test(is_customer)
+def customer_view_invest(request):
+    cuser=User.objects.get(id=request.user.id)
+    iuser = Investor.objects.get(user=cuser)
+    investForm = InvestmentForm(request.POST or None, request.FILES or None, instance=iuser)
+    context={
+        'iuser':iuser,
+        'cuser':cuser,
+        'investForm':investForm
+    }
+    return render(request, 'back/customer/customer-invest-view.html', context)
+
+
+
+@login_required(login_url='customerlogin')
+@user_passes_test(is_customer)
+def customer_view_invest_updates(request):
+    cuser=User.objects.get(id=request.user.id)
+    iuser = Investor.objects.get(user=cuser)
+    updates = Update.objects.all()
+    context = {'iuser':iuser,'updates':updates}
+    return render(request, 'back/customer/customer-invest-updates-view.html', context)

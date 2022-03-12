@@ -11,7 +11,7 @@
         <div class="container register-form">
             <div class="form">
                 <div class="note">
-                    <h4>Get Your Investments Details</h4>
+                    <h4>Get Your Investments Updates</h4>
                     <h6>Hello, {{request.user.first_name}}</h6>
                     <img class="avatar-img rounded-circle" src="{{iuser.profile_pic.url}}" style="width: 100px;">
                 </div>
@@ -26,22 +26,25 @@
                             </tr>
                         </thead>
                         <tr>
-                            <td>{{investForm.invested_amount.label}} : {{investForm.invested_amount}}</td>
+                            <td>Your Investment : {{updates.investment}}</td>
                         </tr>
                         <tr>
-                            <td>Investment Date : {{investForm.investment_date}}</td>
+                            <td>Note By Admin : {{updates.next_payment_note}}</td>
                         </tr>
                         <tr>
-                            <td>Investment Priod : {{investForm.investment_period}}</td>
+                            <td>Next Payment Date : {{updates.next_payment_date}}</td>
                         </tr>
                         <tr>
-                            <td>Investment Note : {{investForm.investment_note}}</td>
+                            <td>Next Investment Note : {{updates.payment_mode}}</td>
                         </tr>
                         <tr>
-                            <td>Created Date : {{investForm.investment.created}}</td>
+                            <td>Created Date : {{updates.transaction_id}}</td>
                         </tr>
                         <tr>
-                            <td>Investment Status :  {{investForm.investment.status}}</td>
+                            <td>Investment Status :  {{updates.payment_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Updated :  {{updates.updated}}</td>
                         </tr>
                     </table>
                 </div>

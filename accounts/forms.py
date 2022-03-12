@@ -1,3 +1,4 @@
+from dataclasses import fields
 from pyexpat import model
 from django import forms
 from .models import *
@@ -45,3 +46,20 @@ class CustomerSignupForm(UserCreationForm):
         my_customer_group = Group.objects.get_or_create(name='CUSTOMER')
         my_customer_group[0].user_set.add(user)
         return user
+
+
+
+
+
+class InvestorProfileForm(forms.ModelForm):
+    class Meta:
+        model = Investor
+        fields = ['profile_pic','full_address','bank_details','upi_no','date_of_birth']
+
+
+
+
+class InvestmentForm(forms.ModelForm):
+    class Meta:
+        model = Investment
+        fields = ['invested_amount','investment_date','investment_period','investment_note','status']

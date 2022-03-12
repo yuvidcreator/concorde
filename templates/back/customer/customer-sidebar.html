@@ -15,48 +15,42 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{% url 'customer-update' %}">
+        <a class="nav-link" href="#">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Update Profile</span></a>
+            <span>Dashboard</span></a>
     </li>
+    {% comment %}
     <li class="nav-item active">
-        <a class="nav-link" href="{% url 'customer-pic-update' %}">
+        <a class="nav-link" href="#">
             <i class="fas fa-fw fa-user"></i>
             <span>Update Photo</span></a>
     </li>
-
+    {% endcomment %}
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <!-- <div class="sidebar-heading">
+    {% comment %}<div class="sidebar-heading">
         Interface
-    </div> -->
+    </div> {% endcomment %}
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="{% url 'Customer-Invested' %}" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-piggy-bank"></i>
             <span>Investments</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Details:</h6>
-                <a class="collapse-item" href="#">Earnings</a>
-                <a class="collapse-item" href="{% url 'customer-invest-view' %}">Updates</a>
-            </div>
-        </div>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="{% url 'Customer-Investment-Updates' %}" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-id-badge"></i>
-            <span>Portfolio</span>
+            <span>Updates</span>
         </a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <!-- <li class="nav-item">
+    {% comment %} <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>NA</span>
@@ -69,8 +63,9 @@
                 <a class="collapse-item" href="#">Waiting for Approval</a>
             </div>
         </div>
-    </li> -->
+    </li> {% endcomment %}
 
+    {% comment %}
     <!-- Divider -->
     <!-- <hr class="sidebar-divider"> -->
 
@@ -99,7 +94,8 @@
             </div>
         </div>
     </li> -->
-
+    {% endcomment %}
+    
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

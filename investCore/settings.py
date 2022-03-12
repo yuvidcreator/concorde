@@ -76,9 +76,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'investCore.wsgi.application'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 AUTH_USER_MODEL = 'accounts.User'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL='/afterlogin'
+
+
 
 
 # Database
