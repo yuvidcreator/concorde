@@ -10,6 +10,7 @@
 
 <div class="row">
 
+    {% comment %}
     <!-- Recent Doctor Chart -->
     <div class="col-xl-12 col-lg-7">
         <div class="card shadow mb-4">
@@ -48,6 +49,7 @@
             </div>
         </div>
     </div>
+    {% endcomment %}
 
     <!-- Recent Patient Chart -->
     <div class="col-xl-12 col-lg-7">
@@ -55,7 +57,7 @@
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">
-                    <a href="{% url 'admin-customer-invest-list' %}">Update Investors :</a>
+                    Update Investors :
                 </h6>
             </div>
 
@@ -65,21 +67,25 @@
                         <tr>
                             <th>Pic</th>
                             <th>Name</th>
-                            <th>Invested Amount</th>
-                            <th>Invested Date</th>
-                            <th>Next Payment</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Status</th>
                             <th>Invest Update</th>
                         </tr>
                     </thead>
                     {% for d in customers %}
-                    <tr>
+                    <tr> 
                         {% if d.profile_pic %}
                         <td><img class="avatar-img rounded-circle" src="{{d.profile_pic.url}}" style="width: 36px;"></td>
                         {% endif %}
                         <td>{{d.get_name}}</td>
                         <td>{{d.get_email}}</td>
                         <td>{{d.get_mobile}}</td>
-                        <td>{{d.get_mobile}}</td>
+                        {% if d.status %}
+                        <td> <span class="label label-primary">Permanent</span></td>
+                        {% else %}
+                        <td> <span class="label label-success">Waiting for Approval</span></td>
+                        {% endif %}
                         <td><a href="{% url 'admin-customer-invest-update' d.id %}"><i class="fas fa-fw fa-edit"></i></a></td>
                     </tr>
                     {% endfor %}
