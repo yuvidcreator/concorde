@@ -76,4 +76,4 @@ class Update(models.Model):
     payment_status = models.BooleanField(default=False) 
 
     def __str__(self):
-        return str(self.user+" = "+self.next_payment_date)
+        return self.next_payment_note

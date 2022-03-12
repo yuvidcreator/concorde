@@ -15,39 +15,37 @@
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Update Investors:</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Investors List:</h6>
             </div>
 
             <div class="card-body table-responsive py-3 d-flex flex-row align-items-center justify-content-between">
                 <table class="table table-hover" id="dev-table">
                     <thead>
                         <tr>
-                            <th>Pic</th>
                             <th>Name</th>
                             <th>Invested Amount</th>
-                            <th>Invested Date</th>
-                            <th>Next Payment</th>
-                            <th>Invest Update</th>
+                            <th>Note</th>
+                            <th>Next Pay Date</th>
+                            <th>Updated On</th>
                         </tr>
                     </thead>
-                    {% comment %}
-                    {% for d in customers %}
+                    {% for d in upadte %}
                     <tr>
-                        {% if d.profile_pic %}
-                        <td><img class="avatar-img rounded-circle" src="{{d.profile_pic.url}}" style="width: 50px;"></td>
-                        {% endif %}
-                        <td>{{d.get_name}}</td>
-                        <td>{{d.get_email}}</td>
-                        <td>{{d.get_mobile}}</td>
-                        <td>{{d.get_mobile}}</td>
-                        <td><a href="{% url 'adminupdate-invest' d.id %}"><i class="fas fa-fw fa-edit"></i></a></td>
+                        <td>{{d.investor}}</td>
+                        <td>{{d.investment}}</td>
+                        <td>{{d.next_payment_note}}</td>
+                        <td>{{d.next_payment_date}}</td>
+                        {% comment %}
+                        <td><a href="{% url 'admin-customer-invest-update' d.id %}"><i class="fas fa-fw fa-edit"></i></a></td>
+                        {% endcomment %}
+                        <td>{{d.updated}}</td>
                     </tr>
                     {% endfor %}
-                    {% endcomment %}
                 </table>
             </div>
             <!-- Card Body -->
             <div class="card-body">
+
             </div>
         </div>
     </div>

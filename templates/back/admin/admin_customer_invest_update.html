@@ -1,0 +1,52 @@
+{% extends 'back/admin/admin-base.html' %}{% load static %}{% load widget_tweaks %} {% block title %}Invester - Dashboard{% endblock title %} {% block static %} {% endblock static %} {% block content %}
+
+<div class="">
+    <div class="card">
+        {% for i in messages %}
+        <p style="color:green">{{i}}</p>
+        {% endfor %}
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <h4>Investments Updates</h4>
+                    <h6>{{customer.get_name}}'s Investment Update</h6>
+                    <img class="avatar-img rounded-circle" src="{{customer.profile_pic.url}}" style="width: 100px;">
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover" id="dev-table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <label>{{investUpdate.investor.label}}</label> {% render_field investUpdate.investor class="form-control" placeholder="Select Investor" %}<br>
+                            </tr>
+                            <tr>
+                                <label>{{investUpdate.investment.label}}</label>
+                                {% render_field investUpdate.investment class="form-control" placeholder="Investmented Amount" %}<br>
+                            </tr>
+                            <tr>
+                                <label>{{investUpdate.next_payment_note.label}}</label> {% render_field investUpdate.next_payment_note class="form-control" placeholder="Next Payment Note" %}<br>
+                            </tr>
+                            <tr>
+                                <label>{{investUpdate.next_payment_date.label}}</label> {% render_field investUpdate.next_payment_date class="form-control" placeholder="Next Payment Date" %}<br>
+                            </tr>
+                            <tr>
+                                <label>{{investUpdate.payment_mode.label}}</label> {% render_field investUpdate.payment_mode class="form-control" placeholder="Payment Mode" %}<br>
+                            </tr>
+                            <tr>
+                                <label>{{investUpdate.transaction_id.label}}</label> {% render_field investUpdate.transaction_id class="form-control" placeholder="Transaction ID" %}<br>
+                            </tr>
+                            <br>
+                            <button class="btn btn-primary btn-user btn-block" type="submit">Update</button>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

@@ -63,3 +63,12 @@ class InvestmentForm(forms.ModelForm):
     class Meta:
         model = Investment
         fields = ['invested_amount','investment_date','investment_period','investment_note','status']
+
+
+
+class InvestUpdateForm(forms.ModelForm):
+    investor = forms.ModelChoiceField(queryset=Investor.objects.all().filter(status=True), empty_label="Select Investor", to_field_name="user_id")
+    payment_status = forms.CheckboxInput()
+    class Meta:
+        model=Update
+        fields=['investor','investment','next_payment_note','next_payment_date','payment_mode','transaction_id']

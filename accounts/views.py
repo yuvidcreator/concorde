@@ -79,8 +79,9 @@ def afterlogin_view(request):
     if is_admin(request.user):
         return redirect('Admin-Dahsboard')
     elif is_customer(request.user):
-        accountapproval=Investor.objects.all().filter(id=request.user.id,status=True)
-        if accountapproval:
+        # accountapproval=Investor.objects.all().filter(id=request.user.id,status=True)
+        accountapproval=Investor.objects.get(user_id=request.user.id)
+        if accountapproval.status==True:
             return redirect('Customer-Dahsboard')
         else:
             return render(request,'back/customer/customer_wait_for_approval.html')
@@ -192,7 +193,59 @@ def reject_customer_view(request,pk):
 
 
 
+#------------------FOR APPROVING INVESTORS BY ADMIN----------------------
+@login_required(login_url='Admin-Login')
+@user_passes_test(is_admin)
+def admin_customer_invest_list(request):
+    #those whose approval are needed
+    #for four cards
+    # customers=Investor.objects.all().order_by('-id')
+    customercount=Investor.objects.all().filter(status=True).count()
+    pendingcustomercount=Investor.objects.all().filter(status=False).count()
+    customers=Investor.objects.all()
+    upadte = Update.objects.all()
+    context = {
+        'customercount':customercount,
+        'pendingcustomercount':pendingcustomercount,
+        'customers':customers,
+        'upadte':upadte,
+    }
+    return render(request,'back/admin/admin_customer_invest_list.html',context)
 
+
+
+@login_required(login_url='Admin-Login')
+@user_passes_test(is_admin)
+def admin_view_customers_investment(request, pk):
+    customer=Investor.objects.get(id=pk)
+    investment = Investment.objects.all().filter(user=customer, status=True)
+    context= {'customer':customer, 'investment':investment}
+    return redirect(request, 'back/admin/admin_invest_view.html', context)
+
+
+
+@login_required(login_url='Admin-Login')
+@user_passes_test(is_admin)
+def admin_customer_invest_update(request, pk):
+    customer=Investor.objects.get(id=pk)
+    user=User.objects.get(id=customer.user_id)
+    investUpdate = InvestUpdateForm(request.POST or None, instance=customer)
+    context = {'customer':customer, 'investUpdate':investUpdate}
+    if request.method == "POST":
+        if investUpdate.is_valid() and customer.status==True:
+            update = investUpdate.save(commit=False)
+            investor=request.POST['investor']
+            investment = request.POST['investment']
+            next_payment_note = request.POST['next_payment_note']
+            next_payment_date=request.POST['next_payment_date']
+            payment_mode=request.POST['payment_mode']
+            transaction_id=request.POST['transaction_id']
+            print(investment,next_payment_note,next_payment_date)
+            Update.objects.create(investor=investor,investment=investment,next_payment_note=next_payment_note,next_payment_date=next_payment_date,payment_mode=payment_mode,transaction_id=transaction_id,payment_status=True)
+            messages.success(request, "Investment Status Updated Successfully.")
+            return redirect('admin-customer-invest-list')
+    else:
+        return render(request, 'back/admin/admin_customer_invest_update.html', context)
 
 
 
@@ -239,8 +292,9 @@ def CustomerDash(request):
 def CustomerProfile(request):
     cuser = User.objects.get(id=request.user.id)
     iuser = Investor.objects.get(user=cuser)
+    nvstr = Investor.objects.get(user_id=request.user.id)
     userForm = InvestorProfileForm(request.POST or None, request.FILES or None, instance=iuser)
-    context = {'userForm':userForm}
+    context = {'userForm':userForm,'iuser':iuser,'nvstr':nvstr}
     if request.method == "POST":
         userForm = InvestorProfileForm(request.POST or None, request.FILES or None, instance=iuser)
         if userForm.is_valid():
@@ -278,6 +332,6 @@ def customer_view_invest(request):
 def customer_view_invest_updates(request):
     cuser=User.objects.get(id=request.user.id)
     iuser = Investor.objects.get(user=cuser)
-    updates = Update.objects.all()
+    updates = Update.objects.all().filter(id=request.user.id)
     context = {'iuser':iuser,'updates':updates}
     return render(request, 'back/customer/customer-invest-updates-view.html', context)

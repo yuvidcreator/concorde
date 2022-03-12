@@ -19,13 +19,16 @@ urlpatterns = [
     #----------------------DASHBOARDS URLS------------------------------------
     path('admindash/', AdminDash, name="Admin-Dahsboard"),
     path('adminprofile/', AdminProfile, name="Admin-Profile"),
-    
-
 
     #----------------------ADMIN-CUSTOMERS APPROVALS URLS--------------------------------
     path('admin-approve-customer/', admin_approve_customer_view, name='admin-approve-customer'),
     path('approve-customer/<int:pk>/', approve_customer_view, name='approve-customer'),
     path('reject-customer/<int:pk>/', reject_customer_view, name='reject-customer'),
+
+    #----------------------ADMIN-CUSTOMERS INVEST URLS------------------------------------
+    path('admin-customer-invest-list/', admin_customer_invest_list, name='admin-customer-invest-list'),
+    path('admin-customer-invest-update/<int:pk>/', admin_customer_invest_update, name='admin-customer-invest-update'),
+
 
     #----------------------INVESTOR DASHBOARDS URLS------------------------------------
     path('customerdash/', CustomerDash, name="Customer-Dahsboard"),
