@@ -69,12 +69,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.csrf',
             ],
         },
     },
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://concordeinvestments.in", "https://www.concordeinvestments.in","http://65.0.202.177/"]
+# CSRF_TRUSTED_ORIGINS = ["https://concordeinvestments.in", "https://www.concordeinvestments.in","http://65.0.202.177/"]
 
 WSGI_APPLICATION = 'investCore.wsgi.application'
 
@@ -117,10 +118,10 @@ DATABASES['default'].update(db_from_env)
 
 
 #Django CSRF protection does this by ensuring any forms submitted (for logins, signups, and so on) to your project were created by your project and not a third party.
-CSRF_COOKIE_SECURE = False
+# CSRF_COOKIE_SECURE = False
 
 #cookies your project produces for activities, such as logins, will only work over an encrypted connection
-SESSION_COOKIE_SECURE = False
+# SESSION_COOKIE_SECURE = False
 
 #ensures third parties cannot inject scripts into your project
 #Warning: Django’s documentation states you shouldn’t rely completely on SECURE_BROWSER_XSS_FILTER. Never forget to validate and sanitize input.
