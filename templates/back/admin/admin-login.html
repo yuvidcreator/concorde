@@ -11,7 +11,10 @@
                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                     </div>
                     <form class="user" method="POST">
-                        {% csrf_token %} {{ form|crispy }} {% comment %}
+                        {% csrf_token %} 
+                        {{ form|crispy }} 
+                        
+                        {% comment %}
                         <div class="form-group">
                             <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                         </div>
@@ -27,6 +30,7 @@
                             </div>
                         </div>
                         {% endcomment %}
+
                         <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
                     </form>
                     <hr>
@@ -48,6 +52,5 @@
         </div>
     </div>
 </div>
-
-
-{% endblock content %} {% block custJs %}{% endblock custJs %}
+{% endblock content %} 
+{% block custJs %}{% endblock custJs %}
