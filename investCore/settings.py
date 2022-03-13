@@ -115,7 +115,7 @@ DATABASES['default'].update(db_from_env)
 
 
 #Django CSRF protection does this by ensuring any forms submitted (for logins, signups, and so on) to your project were created by your project and not a third party.
-# CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 #cookies your project produces for activities, such as logins, will only work over an encrypted connection
 # SESSION_COOKIE_SECURE = True
