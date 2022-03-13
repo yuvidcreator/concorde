@@ -74,6 +74,8 @@ TEMPLATES = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://concordeinvestments.in", "https://www.concordeinvestments.in","http://65.0.202.177/"]
+
 WSGI_APPLICATION = 'investCore.wsgi.application'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
