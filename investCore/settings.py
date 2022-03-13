@@ -118,13 +118,13 @@ DATABASES['default'].update(db_from_env)
 CSRF_COOKIE_SECURE = False
 
 #cookies your project produces for activities, such as logins, will only work over an encrypted connection
-# SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
 
 #ensures third parties cannot inject scripts into your project
 #Warning: Django’s documentation states you shouldn’t rely completely on SECURE_BROWSER_XSS_FILTER. Never forget to validate and sanitize input.
 # SECURE_BROWSER_XSS_FILTER = True
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+# X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 # Password validation
